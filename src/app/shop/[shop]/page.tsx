@@ -1,8 +1,20 @@
 import { notFound } from "next/navigation";
 import { Product, Shop, ShopMap } from "@/types/types";
+import Image from "next/image";
 
 export default function ShopPage({ params }: { params: { shop: string } }) {
   const shopId = params.shop;
+
+  const wands = {
+    elderWand: "elder-wand.webp",
+    phoenixWand: "phoenix-wand.jpg",
+    unicornWand: "unicorn-wand.jpg",
+  };
+  const weasleyProducts = {
+    skivingSnackbox: "skiving-snackbox.png",
+    extendableEars: "extendable-ears.png",
+    fangedFlyer: "fanged-flyer.png",
+  };
 
   const shops: ShopMap = {
     ollivanders: {
@@ -15,18 +27,21 @@ export default function ShopPage({ params }: { params: { shop: string } }) {
           core: "Thestral tail hair",
           wood: "Elder",
           length: "15 inches",
+          image: `wands/${wands.elderWand}`,
         },
         {
           name: "Phoenix Feather Wand",
           core: "Phoenix feather",
           wood: "Holly",
           length: "11 inches",
+          image: `wands/${wands.phoenixWand}`,
         },
         {
           name: "Unicorn Hair Wand",
           core: "Unicorn hair",
           wood: "Maple",
           length: "12 ¾ inches",
+          image: `wands/${wands.unicornWand}`,
         },
       ],
     },
@@ -39,17 +54,20 @@ export default function ShopPage({ params }: { params: { shop: string } }) {
           description:
             "A box of magical treats that help you skip class with ease.",
           price: "15 Galleons",
+          image: `weasleys/${weasleyProducts.skivingSnackbox}`,
         },
         {
           name: "Extendable Ears",
           description:
             "Magical listening devices for eavesdropping on conversations.",
           price: "30 Galleons",
+          image: `weasleys/${weasleyProducts.extendableEars}`,
         },
         {
           name: "Fanged Flyer",
           description: "A bewitched paper plane that bites on command.",
           price: "8 Galleons",
+          image: `weasleys/${weasleyProducts.fangedFlyer}`,
         },
       ],
     },
@@ -87,21 +105,32 @@ export default function ShopPage({ params }: { params: { shop: string } }) {
 
       {shop.products.length ? (
         <section className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-          {shop.products.map((product: Product, idx: number) => (
+          {shop.products.map((product: Product, idex: number) => (
             <div
-              key={idx}
+              key={idex}
               className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition"
             >
               <h2 className="text-xl font-semibold text-[#5c4033] mb-2">
                 {product.name}
               </h2>
-              <div className="text-gray-700 flex flex-col space-y-2">
-                <p>{product.core && `Core: ${product.core}`}</p>
-                <p>{product.wood && `Wood: ${product.wood}`} </p>
-                <p>{product.length && `Length: ${product.length}`} </p>
-                <p>{product.price && `Price: ${product.price}`}</p>
+              <div className="flex space-x-4">
+                <div className="border border-black">
+                  <Image
+                    width={150}
+                    height={150}
+                    src={`/${product.image}`}
+                    alt="product image"
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="text-gray-700 flex flex-col space-y-1">
+                  <p>{product.core && `Core: ${product.core}`}</p>
+                  <p>{product.wood && `Wood: ${product.wood}`} </p>
+                  <p>{product.length && `Length: ${product.length}`} </p>
+                  <p>{product.price && `Price: ${product.price}`}</p>
+                </div>
               </div>
-              <button className="mt-4 bg-[#c9a66b] text-white px-4 py-2 rounded hover:bg-[#4b2e2e] transition">
+              <button className="mt-4 bg-[#c9a66b] text-white px-4 py-2 rounded hover:bg-[#4b2e2e] transition w-full">
                 Add to Cart
               </button>
             </div>
