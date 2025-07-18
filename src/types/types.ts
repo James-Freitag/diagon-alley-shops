@@ -9,9 +9,10 @@ export type Product = {
 };
 
 export type Shop = {
+  id: number;
+  slug: string;
   name: string;
   description: string;
-  products: Product[];
   image?: string;
 };
 

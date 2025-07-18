@@ -25,7 +25,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="bg-white shadow-md z-[999]">
+    <nav className="bg-white shadow-md z-[999] sticky top-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="text-3xl font-bold text-[#4b2e2e]">
@@ -41,7 +41,7 @@ export default function Navbar() {
             <div className="relative z-50" ref={dropdownRef}>
               <button
                 onClick={() => setIsShopsOpen((prev) => !prev)}
-                className="flex items-center gap-1 hover:text-[#c9a66b] transition"
+                className="flex items-center gap-1 hover:text-[#c9a66b] transition cursor-pointer"
               >
                 Shops <ChevronDown className="w-4 h-4 cursor-pointer" />
               </button>

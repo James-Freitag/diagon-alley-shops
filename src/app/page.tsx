@@ -23,7 +23,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-4">
             <Link
-              href="/shops"
+              href="/shop"
               className="bg-[#c9a66b] border-white border px-6 py-3 rounded font-semibold hover:bg-transparent transition"
             >
               Browse Shops

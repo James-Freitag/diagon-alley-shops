@@ -22,7 +22,7 @@ export default function Footer() {
           <ul className="space-y-1">
             <li>
               <Link
-                href="/shops/ollivanders"
+                href="/shop/ollivanders"
                 className="hover:text-darkwood transition"
               >
                 Ollivanders
@@ -30,7 +30,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/shops/weasleys-wizard-wheezes"
+                href="/shop/weasleys-wizard-wheezes"
                 className="hover:text-darkwood transition"
               >
                 Weasleys&apos; Wizard Wheezes
@@ -38,7 +38,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/shops/madam-malkins"
+                href="/shop/madam-malkins"
                 className="hover:text-darkwood transition"
               >
                 Madam Malkin&apos;s
